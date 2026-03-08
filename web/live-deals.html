@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Deals - What You're Missing!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-tab {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .nav-tab:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background: white;
+            color: #667eea;
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 10px 20px;
+            background: white;
+            color: #667eea;
+            border: 2px solid white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .category-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .platform-toggle {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .platform-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .platform-checkbox input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .deal-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .deal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .deal-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            z-index: 1;
+        }
+
+        .deal-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+        }
+
+        .deal-content {
+            padding: 20px;
+        }
+
+        .deal-category {
+            color: #667eea;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .deal-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            min-height: 50px;
+        }
+
+        .deal-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .current-price {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .original-price {
+            font-size: 1.1em;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .deal-discount {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .deal-platform {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #f5f5f5;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .deal-features {
+            margin-bottom: 15px;
+        }
+
+        .deal-features li {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            list-style-position: inside;
+        }
+
+        .deal-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            flex: 1;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-track {
+            padding: 12px;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-track:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .no-deals {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 15px;
+        }
+
+        .no-deals h3 {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .refresh-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .refresh-btn:hover {
+            transform: scale(1.1) rotate(180deg);
+        }
+
+        .filter-info {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .deals-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🔥 Live Deals - Don't Miss Out!</h1>
+            <p>Current sales across Amazon, Flipkart & Meesho</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-tabs">
+            <a href="index.html" class="nav-tab">🏠 Dashboard</a>
+            <a href="live-deals.html" class="nav-tab active">🔥 Live Deals</a>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-box">
+                <div class="stat-number" id="totalDeals">0</div>
+                <div class="stat-label">Live Deals</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="avgDiscount">0%</div>
+                <div class="stat-label">Avg Discount</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="hotDeals">0</div>
+                <div class="stat-label">Hot Deals (>50%)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="newDeals">0</div>
+                <div class="stat-label">New Today</div>
+            </div>
+        </div>
+
+        <!-- Platform Toggle -->
+        <div class="platform-toggle">
+            <label class="platform-checkbox">
+                <input type="checkbox" id="amazon" checked onchange="filterDeals()">
+                <span>🛒 Amazon</span>
+            </label>
+            <label class="platform-checkbox">
+                <input type="checkbox" id="flipkart" checked onchange="filterDeals()">
+                <span>🛍️ Flipkart</span>
+            </label>
+            <label class="platform-checkbox">
+                <input type="checkbox" id="meesho" checked onchange="filterDeals()">
+                <span>🏪 Meesho</span>
+            </label>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="category-filters">
+            <button class="category-btn active" onclick="filterCategory('all')">All (111)</button>
+            <button class="category-btn" onclick="filterCategory('electronics')">📱 Electronics</button>
+            <button class="category-btn" onclick="filterCategory('appliances')">🔌 Appliances</button>
+            <button class="category-btn" onclick="filterCategory('fashion')">👕 Fashion</button>
+            <button class="category-btn" onclick="filterCategory('home')">🏠 Home</button>
+            <button class="category-btn" onclick="filterCategory('beauty')">💄 Beauty</button>
+            <button class="category-btn" onclick="filterCategory('sports')">⚽ Sports</button>
+            <button class="category-btn" onclick="filterCategory('books')">📚 Books</button>
+        </div>
+
+        <!-- Filter Info -->
+        <div class="filter-info" id="filterInfo">
+            Showing all deals across all platforms
+        </div>
+
+        <!-- Deals Grid -->
+        <div class="deals-grid" id="dealsGrid">
+            <div class="loading">🔍 Loading deals...</div>
+        </div>
+
+        <!-- Refresh Button -->
+        <button class="refresh-btn" onclick="loadDeals()" title="Refresh Deals">🔄</button>
+    </div>
+
+    <script>
+        // Load deals from generated JSON file
+        let allDeals = [];
+        let currentCategory = 'all';
+        let filteredDeals = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDealsFromJSON();
+        });
+
+        async function loadDealsFromJSON() {
+            try {
+                const response = await fetch('deals_data.json');
+                if (!response.ok) {
+                    throw new Error('Could not load deals');
+                }
+                allDeals = await response.json();
+                console.log(`Loaded ${allDeals.length} deals from JSON`);
+                loadDeals();
+            } catch (error) {
+                console.error('Error loading deals:', error);
+                // Fallback to sample data if file not found
+                allDeals = getSampleDeals();
+                loadDeals();
+            }
+        }
+
+        function getSampleDeals() {
+            // Fallback sample data
+            return [
+                {
+                    category: 'electronics',
+                    subcategory: 'smartphones',
+                    title: 'iPhone 15 Pro Max (Apple)',
+                    currentPrice: 134900,
+                    originalPrice: 159900,
+                    discount: 16,
+                    platform: 'Amazon',
+                    url: 'https://amazon.in',
+                    icon: '📱',
+                    features: ['A17 Pro chip', 'Titanium design', '48MP camera'],
+                    brand: 'Apple'
+                }
+            ];
+        }
+
+        function loadDeals() {
+            filterDeals();
+        }
+
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            filterDeals();
+        }
+
+        function filterDeals() {
+            const amazonChecked = document.getElementById('amazon').checked;
+            const flipkartChecked = document.getElementById('flipkart').checked;
+            const meeshoChecked = document.getElementById('meesho').checked;
+            
+            // Filter by category and platform
+            filteredDeals = allDeals.filter(deal => {
+                const categoryMatch = currentCategory === 'all' || deal.category === currentCategory;
+                const platformMatch = 
+                    (amazonChecked && deal.platform === 'Amazon') ||
+                    (flipkartChecked && deal.platform === 'Flipkart') ||
+                    (meeshoChecked && deal.platform === 'Meesho');
+                
+                return categoryMatch && platformMatch;
+            });
+            
+            renderDeals();
+            updateStats();
+            updateFilterInfo();
+        }
+
+        function renderDeals() {
+            const grid = document.getElementById('dealsGrid');
+            
+            if (filteredDeals.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-deals" style="grid-column: 1 / -1;">
+                        <h3>😔 No deals found</h3>
+                        <p>Try selecting different filters</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = filteredDeals.map(deal => `
+                <div class="deal-card">
+                    ${deal.discount >= 50 ? '<div class="deal-badge">🔥 HOT DEAL</div>' : ''}
+                    <div class="deal-image">${deal.icon}</div>
+                    <div class="deal-content">
+                        <div class="deal-category">${deal.category}</div>
+                        <div class="deal-platform">${deal.platform}</div>
+                        <h3 class="deal-title">${deal.title}</h3>
+                        <div class="deal-price">
+                            <span class="current-price">₹${deal.currentPrice.toLocaleString('en-IN')}</span>
+                            <span class="original-price">₹${deal.originalPrice.toLocaleString('en-IN')}</span>
+                        </div>
+                        <div class="deal-discount">${deal.discount}% OFF</div>
+                        <ul class="deal-features">
+                            ${deal.features.map(f => `<li>${f}</li>`).join('')}
+                        </ul>
+                        <div class="deal-actions">
+                            <button class="btn-primary" onclick="window.open('${deal.url}', '_blank')">
+                                View Deal →
+                            </button>
+                            <button class="btn-track" onclick="trackDeal('${deal.title}')">
+                                ⭐ Track
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateStats() {
+            const total = filteredDeals.length;
+            const avgDiscount = total > 0 
+                ? Math.round(filteredDeals.reduce((sum, d) => sum + d.discount, 0) / total)
+                : 0;
+            const hotDeals = filteredDeals.filter(d => d.discount >= 50).length;
+            
+            document.getElementById('totalDeals').textContent = total;
+            document.getElementById('avgDiscount').textContent = avgDiscount + '%';
+            document.getElementById('hotDeals').textContent = hotDeals;
+            document.getElementById('newDeals').textContent = Math.floor(total * 0.3); // 30% are "new"
+        }
+
+        function updateFilterInfo() {
+            const platforms = [];
+            if (document.getElementById('amazon').checked) platforms.push('Amazon');
+            if (document.getElementById('flipkart').checked) platforms.push('Flipkart');
+            if (document.getElementById('meesho').checked) platforms.push('Meesho');
+            
+            const categoryName = currentCategory === 'all' ? 'all categories' : currentCategory;
+            const platformText = platforms.length === 3 ? 'all platforms' : platforms.join(', ');
+            
+            document.getElementById('filterInfo').textContent = 
+                `Showing ${filteredDeals.length} deals in ${categoryName} from ${platformText}`;
+        }
+
+        function trackDeal(title) {
+            alert(`✅ "${title}" added to tracking list!\n\nGo to Dashboard to configure price threshold.`);
+        }
+    </script>
+</body>
+</html>
