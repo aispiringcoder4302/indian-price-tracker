@@ -9,7 +9,7 @@ from typing import Dict, List, Optional
 import json
 
 class MonitoringLogger:
-    def __init__(self, base_path: str = 'web/monitoring'):
+    def __init__(self, base_path: str = 'docs/monitoring'):
         self.base_path = Path(base_path)
         self.base_path.mkdir(parents=True, exist_ok=True)
         
