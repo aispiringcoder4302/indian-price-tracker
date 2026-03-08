@@ -3,23 +3,12 @@
     "title": "Test iPhone 15",
     "platform": "Amazon",
     "category": "Electronics",
-    "price": 1699,
+    "price": 93499,
     "originalPrice": 100000,
-    "discount": 98,
+    "discount": 6,
     "url": "https://www.amazon.in/dp/B0CHX1W1XY",
     "image": "https://via.placeholder.com/200x200?text=Electronics",
-    "timestamp": "2026-03-08 13:39:44"
-  },
-  {
-    "title": "Test iPhone 15",
-    "platform": "Amazon",
-    "category": "Electronics",
-    "price": 1699,
-    "originalPrice": 100000,
-    "discount": 98,
-    "url": "https://www.amazon.in/dp/B0CHX1W1XY",
-    "image": "https://via.placeholder.com/200x200?text=Electronics",
-    "timestamp": "2026-03-08 13:39:48"
+    "timestamp": "2026-03-08 14:07:14"
   },
   {
     "title": "Test iPhone 15",
@@ -30,7 +19,7 @@
     "discount": 6,
     "url": "https://www.amazon.in/dp/B0CHX1W1XY",
     "image": "https://via.placeholder.com/200x200?text=Electronics",
-    "timestamp": "2026-03-08 13:39:51"
+    "timestamp": "2026-03-08 14:07:18"
   },
   {
     "title": "Test iPhone 15",
@@ -41,7 +30,18 @@
     "discount": 98,
     "url": "https://www.amazon.in/dp/B0CHX1W1XY",
     "image": "https://via.placeholder.com/200x200?text=Electronics",
-    "timestamp": "2026-03-08 13:39:55"
+    "timestamp": "2026-03-08 14:07:22"
+  },
+  {
+    "title": "Test iPhone 15",
+    "platform": "Amazon",
+    "category": "Electronics",
+    "price": 93499,
+    "originalPrice": 100000,
+    "discount": 6,
+    "url": "https://www.amazon.in/dp/B0CHX1W1XY",
+    "image": "https://via.placeholder.com/200x200?text=Electronics",
+    "timestamp": "2026-03-08 14:07:26"
   },
   {
     "title": "Test iPhone 15",
@@ -52,6 +52,28 @@
     "discount": 98,
     "url": "https://www.amazon.in/dp/B0CHX1W1XY",
     "image": "https://via.placeholder.com/200x200?text=Electronics",
-    "timestamp": "2026-03-08 13:39:59"
+    "timestamp": "2026-03-08 14:07:31"
+  },
+  {
+    "title": "iPhone 15 Pro Max",
+    "platform": "Amazon",
+    "category": "Electronics",
+    "price": 1699,
+    "originalPrice": 130000,
+    "discount": 98,
+    "url": "https://www.amazon.in/dp/B0CHX1W1XY",
+    "image": "https://via.placeholder.com/200x200?text=Electronics",
+    "timestamp": "2026-03-08 14:07:35"
+  },
+  {
+    "title": "Samsung Galaxy S23 Ultra",
+    "platform": "Amazon",
+    "category": "Electronics",
+    "price": 49998,
+    "originalPrice": 110000,
+    "discount": 54,
+    "url": "https://www.amazon.in/dp/B0BT9CXXXX",
+    "image": "https://via.placeholder.com/200x200?text=Electronics",
+    "timestamp": "2026-03-08 14:08:05"
   }
 ]

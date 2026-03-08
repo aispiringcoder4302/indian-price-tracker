@@ -1,0 +1,5 @@
+⏳ **Scraping 20 Products - This will take 3-5 minutes...**
+
+Please wait while Playwright scrapes all products from Amazon, Flipkart, and Meesho.
+
+Expected time: ~10-15 seconds per product × 20 products = 3-5 minutes total
