@@ -1,11 +1,182 @@
 {
   "products": [
     {
-      "name": "Test iPhone 15",
-      "threshold": 100000,
+      "name": "iPhone 15 Pro Max",
+      "threshold": 130000,
       "urls": {
         "amazon": "https://www.amazon.in/dp/B0CHX1W1XY",
-        "flipkart": "",
+        "flipkart": "https://www.flipkart.com/apple-iphone-15-pro-max-natural-titanium-256-gb/p/itm6fd19c78162ff",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Samsung Galaxy S23 Ultra",
+      "threshold": 110000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B0BT9CXXXX",
+        "flipkart": "https://www.flipkart.com/samsung-galaxy-s23-ultra-5g-cream-256-gb/p/itm4baf20ea0621f",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "OnePlus 11R 5G",
+      "threshold": 40000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B0BQX6Z5FZ",
+        "flipkart": "https://www.flipkart.com/oneplus-11r-5g-sonic-black-128-gb/p/itm5d2c15ed9fb72",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Sony WH-1000XM5 Headphones",
+      "threshold": 28000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B0BZM8MR3P",
+        "flipkart": "https://www.flipkart.com/sony-wh-1000xm5-wireless-noise-cancelling-headphones/p/itm55da9e7f8a89f",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Apple Watch Series 9",
+      "threshold": 42000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B0CHX8SZQS",
+        "flipkart": "https://www.flipkart.com/apple-watch-series-9-gps-41-mm-starlight-aluminium-case/p/itm12a3b4c5d6e7f",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Samsung 55 inch 4K Smart TV",
+      "threshold": 45000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B0C1Y7TQPF",
+        "flipkart": "https://www.flipkart.com/samsung-138-8-cm-55-inch-ultra-hd-4k-led-smart-tv/p/itm7e8f9g0h1i2j",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "LG Refrigerator 260L",
+      "threshold": 25000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B09NBKWQBT",
+        "flipkart": "https://www.flipkart.com/lg-260-l-frost-free-double-door-refrigerator/p/itm3k4l5m6n7o8p",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Whirlpool Washing Machine 7kg",
+      "threshold": 18000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B0BJKFGXXX",
+        "flipkart": "https://www.flipkart.com/whirlpool-7-kg-5-star-fully-automatic-top-load-washing-machine/p/itm9q0r1s2t3u4v",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Nike Air Max Shoes",
+      "threshold": 8000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B0B1YQXXXX",
+        "flipkart": "https://www.flipkart.com/nike-air-max-running-shoes-men/p/itm5w6x7y8z9a0b",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Levi's Men Jeans",
+      "threshold": 2500,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B07WZXXXXX",
+        "flipkart": "https://www.flipkart.com/levis-slim-men-blue-jeans/p/itmc1d2e3f4g5h6",
+        "meesho": "https://www.meesho.com/levis-mens-jeans/p/1234567"
+      }
+    },
+    {
+      "name": "Puma T-Shirt",
+      "threshold": 1200,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B09WKXXXXX",
+        "flipkart": "https://www.flipkart.com/puma-solid-men-round-neck-black-t-shirt/p/itm7i8j9k0l1m2n",
+        "meesho": "https://www.meesho.com/puma-tshirt/p/2345678"
+      }
+    },
+    {
+      "name": "Adidas Sports Shoes",
+      "threshold": 5000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B0BWXXXXXX",
+        "flipkart": "https://www.flipkart.com/adidas-running-shoes-men/p/itm3o4p5q6r7s8t",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Wooden Study Table",
+      "threshold": 8000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B09PQXXXXX",
+        "flipkart": "https://www.flipkart.com/home-edge-engineered-wood-study-table/p/itm9u0v1w2x3y4z",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Office Chair Ergonomic",
+      "threshold": 12000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B08XXXXXXX",
+        "flipkart": "https://www.flipkart.com/green-soul-beast-gaming-office-chair/p/itm5a6b7c8d9e0f",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Sofa Set 3 Seater",
+      "threshold": 35000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B0B7QXXXXX",
+        "flipkart": "https://www.flipkart.com/furniture-sofa-set-3-1-1-seater/p/itm1g2h3i4j5k6l",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Lakme Makeup Kit",
+      "threshold": 2000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B01MXXXXXX",
+        "flipkart": "https://www.flipkart.com/lakme-absolute-ultimate-makeup-kit/p/itm7m8n9o0p1q2r",
+        "meesho": "https://www.meesho.com/lakme-makeup-kit/p/3456789"
+      }
+    },
+    {
+      "name": "Mamaearth Face Wash",
+      "threshold": 400,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B09TXXXXXX",
+        "flipkart": "https://www.flipkart.com/mamaearth-vitamin-c-face-wash/p/itm3s4t5u6v7w8x",
+        "meesho": "https://www.meesho.com/mamaearth-facewash/p/4567890"
+      }
+    },
+    {
+      "name": "Yoga Mat Premium",
+      "threshold": 1500,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B07YXXXXXX",
+        "flipkart": "https://www.flipkart.com/strauss-anti-skid-yoga-mat/p/itm9y0z1a2b3c4d",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Dumbbells Set 10kg",
+      "threshold": 2500,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B08BXXXXXX",
+        "flipkart": "https://www.flipkart.com/aurion-pvc-dumbbell-set/p/itm5e6f7g8h9i0j",
+        "meesho": ""
+      }
+    },
+    {
+      "name": "Cricket Bat Professional",
+      "threshold": 5000,
+      "urls": {
+        "amazon": "https://www.amazon.in/dp/B07PXXXXXX",
+        "flipkart": "https://www.flipkart.com/ss-ton-reserve-edition-english-willow-cricket-bat/p/itm1k2l3m4n5o6p",
         "meesho": ""
       }
     }
