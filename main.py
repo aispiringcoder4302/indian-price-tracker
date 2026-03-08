@@ -290,6 +290,16 @@ def main():
     if deleted > 0:
         print(f"🧹 Cleaned up {deleted} old price records")
     
+    # Export deals to JSON for web dashboard
+    print()
+    print("📊 Exporting deals to web dashboard...")
+    try:
+        from export_deals import export_deals_to_json
+        deals_count = export_deals_to_json()
+        print(f"   ✅ Exported {deals_count} deals")
+    except Exception as e:
+        print(f"   ⚠️ Export error: {str(e)[:100]}")
+    
     # Close database
     db.close()
     
