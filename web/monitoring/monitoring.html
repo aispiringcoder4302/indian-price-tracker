@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Tracker Monitoring</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            cursor: pointer;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: white;
+            color: #667eea;
+            border-color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        #content {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            min-height: 500px;
+        }
+
+        #content h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        #content h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        #content h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        #content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        #content th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        #content td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        #content tr:hover {
+            background: #f5f5f5;
+        }
+
+        #content pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #667eea;
+        }
+
+        #content code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        #content ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        #content li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #999;
+            font-size: 1.2em;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        .refresh-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 0.9em;
+            color: #667eea;
+            display: none;
+        }
+
+        .refresh-indicator.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-message {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .tab {
+                padding: 10px 16px;
+                font-size: 0.9em;
+            }
+
+            #content {
+                padding: 20px;
+            }
+
+            #content table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Price Tracker Monitoring</h1>
+            <p>Real-time monitoring dashboard for Indian e-commerce price tracking</p>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" onclick="loadTab('status')">📊 Status</div>
+            <div class="tab" onclick="loadTab('metrics')">📈 Metrics</div>
+            <div class="tab" onclick="loadTab('logs')">📝 Logs</div>
+        </div>
+
+        <div id="content">
+            <div class="loading">Loading monitoring data</div>
+        </div>
+
+        <div class="refresh-indicator" id="refreshIndicator">
+            🔄 Refreshing data...
+        </div>
+    </div>
+
+    <script>
+        let currentTab = 'status';
+        let autoRefreshInterval = null;
+
+        async function loadTab(name) {
+            currentTab = name;
+            const contentDiv = document.getElementById('content');
+            
+            try {
+                // Show loading
+                contentDiv.innerHTML = '<div class="loading">Loading ' + name + ' data</div>';
+                
+                // Fetch markdown file
+                const response = await fetch(name + '.md');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch ' + name + '.md');
+                }
+                
+                const markdown = await response.text();
+                
+                // Convert markdown to HTML
+                const html = marked.parse(markdown);
+                contentDiv.innerHTML = html;
+                
+                // Update active tab
+                document.querySelectorAll('.tab').forEach(tab => {
+                    const tabName = tab.textContent.toLowerCase().includes('status') ? 'status' :
+                                   tab.textContent.toLowerCase().includes('metrics') ? 'metrics' : 'logs';
+                    tab.classList.toggle('active', tabName === name);
+                });
+                
+            } catch (error) {
+                contentDiv.innerHTML = `
+                    <div class="error-message">
+                        <strong>Error loading ${name} data:</strong><br>
+                        ${error.message}<br><br>
+                        <small>Make sure the monitoring files are being generated by the price tracker.</small>
+                    </div>
+                `;
+            }
+        }
+
+        function showRefreshIndicator() {
+            const indicator = document.getElementById('refreshIndicator');
+            indicator.classList.add('active');
+            setTimeout(() => {
+                indicator.classList.remove('active');
+            }, 1000);
+        }
+
+        function getCurrentTab() {
+            return currentTab;
+        }
+
+        function startAutoRefresh() {
+            // Auto-refresh every 30 seconds
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+            }
+            
+            autoRefreshInterval = setInterval(() => {
+                showRefreshIndicator();
+                loadTab(getCurrentTab());
+            }, 30000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTab('status');
+            startAutoRefresh();
+        });
+
+        // Refresh on visibility change (when user returns to tab)
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                loadTab(getCurrentTab());
+            }
+        });
+
+        // Manual refresh on Ctrl+R or Cmd+R
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
+                e.preventDefault();
+                showRefreshIndicator();
+                loadTab(getCurrentTab());
+            }
+        });
+    </script>
+</body>
+</html>

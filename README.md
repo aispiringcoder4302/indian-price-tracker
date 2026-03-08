@@ -1,25 +1,62 @@
-# 🛒 Indian Price Tracker - Production Version
+# 🛒 Indian Price Tracker - Layer 4 Production Service
 
-**24/7 Automated Price Tracking for Amazon.in, Flipkart & Meesho**
+**24/7 Automated Price Tracking with Playwright Scraping & Real-Time Monitoring**
 
-Track prices, get instant Telegram/Email notifications, export to Google Sheets - all running FREE on GitHub!
+Track prices from Amazon.in, Flipkart & Meesho with advanced anti-bot measures, instant notifications, and a live monitoring dashboard - all running FREE on GitHub!
 
 [![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-2088FF?logo=github-actions&logoColor=white)](https://github.com/features/actions)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Playwright](https://img.shields.io/badge/Playwright-Enabled-45ba4b.svg)](https://playwright.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
 ## ✨ Features
 
+### Core Features
+- 🎭 **Playwright Scraping** - Advanced headless browser scraping (70-90% success rate)
 - 🔄 **24/7 Automated Tracking** - Runs every 6 hours on GitHub Actions
-- 📱 **Telegram Bot** - Instant notifications on price drops
-- 📧 **Email Alerts** - Enhanced email with deal summaries
-- 📊 **Google Sheets Export** - Track price history in spreadsheets
-- 🗄️ **SQLite Database** - Proper data storage with query support
+- 📊 **Real-Time Monitoring** - Live dashboard showing status, metrics, and errors
+- 🗄️ **SQLite Database** - Proper data storage with job tracking
 - 🛍️ **Multi-Platform** - Amazon.in, Flipkart, Meesho
+
+### Notifications
+- 📱 **Telegram Bot** - Instant notifications on price drops
+- 📧 **Email Alerts** - Enhanced HTML emails with deal summaries
+
+### Integrations
+- 📈 **Google Sheets Export** - Track price history in spreadsheets
 - 🌐 **Web Dashboard** - Manage products via beautiful UI
-- 💰 **100% FREE** - No hosting costs, runs on GitHub
+- 🔍 **Live Deals Page** - Browse current deals across categories
+
+### Monitoring & Analytics
+- ✅ **Job Status Tracking** - Monitor every scraping run
+- 📊 **Success Rate Metrics** - Track performance by platform
+- 📝 **Error Logging** - Detailed error tracking with retry results
+- 🌐 **External API Access** - All monitoring data accessible via HTTP
+
+### Zero Cost
+- 💰 **100% FREE** - No hosting costs, runs entirely on GitHub
+
+---
+
+## 🌐 Live Monitoring
+
+View real-time tracker status and metrics:
+
+**🔴 Monitoring Dashboard:**
+- **URL:** `https://aispiringcoder4302.github.io/indian-price-tracker/monitoring/monitoring.html`
+- Auto-refreshes every 30 seconds
+- Shows current job status, platform health, recent runs
+
+**📊 Raw Data Endpoints (Markdown):**
+- **Status:** `https://aispiringcoder4302.github.io/indian-price-tracker/monitoring/status.md`
+- **Metrics:** `https://aispiringcoder4302.github.io/indian-price-tracker/monitoring/metrics.md`
+- **Logs:** `https://aispiringcoder4302.github.io/indian-price-tracker/monitoring/logs.md`
+
+**🧪 Test Access:**
+- **URL:** `https://aispiringcoder4302.github.io/indian-price-tracker/test-access.html`
+- Verify all monitoring files are accessible externally
 
 ---
 
@@ -28,7 +65,7 @@ Track prices, get instant Telegram/Email notifications, export to Google Sheets 
 ### 1. Fork/Clone Repository
 
 ```bash
-git clone https://github.com/intrpik/indian-price-tracker.git
+git clone https://github.com/aispiringcoder4302/indian-price-tracker.git
 cd indian-price-tracker
 ```
 
@@ -38,7 +75,7 @@ cd indian-price-tracker
 2. Source: `Deploy from a branch`
 3. Branch: `main` → `/web` folder
 4. Click **Save**
-5. Your dashboard will be live at: `https://intrpik.github.io/indian-price-tracker/`
+5. Your dashboard will be live at: `https://aispiringcoder4302.github.io/indian-price-tracker/`
 
 ### 3. Configure Secrets
 
@@ -63,7 +100,7 @@ Go to **Settings** → **Secrets and variables** → **Actions** → **New repos
 
 ### 4. Add Products
 
-Open your dashboard: `https://intrpik.github.io/indian-price-tracker/`
+Open your dashboard: `https://aispiringcoder4302.github.io/indian-price-tracker/`
 
 1. Fill in product details
 2. Add URLs for Amazon/Flipkart/Meesho
@@ -83,21 +120,42 @@ Open your dashboard: `https://intrpik.github.io/indian-price-tracker/`
 ## 📊 Architecture
 
 ```
-┌─────────────────────────────────────────────┐
-│           GitHub Repository (FREE)           │
-├─────────────────────────────────────────────┤
-│                                             │
-│  📱 Web Dashboard (GitHub Pages)            │
-│     https://intrpik.github.io/...           │
-│                                             │
-│  🤖 Backend (GitHub Actions)                │
-│     Runs every 6 hours automatically        │
-│     ├─ Price scraping                       │
-│     ├─ Database updates                     │
-│     ├─ Notifications (Telegram/Email)       │
-│     └─ Google Sheets export                 │
-│                                             │
-│  🗄️  Data Storage                           │
+┌─────────────────────────────────────────────────────────┐
+│           GitHub Repository (FREE - Layer 4)             │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  🌐 Web Dashboard (GitHub Pages)                        │
+│     https://aispiringcoder4302.github.io/...            │
+│     ├─ Product Manager                                  │
+│     ├─ Live Deals Viewer                                │
+│     ├─ Monitoring Dashboard                             │
+│     └─ External API Access                              │
+│                                                         │
+│  🤖 Backend (GitHub Actions)                            │
+│     Runs every 6 hours automatically                    │
+│     ├─ Playwright scraping (headless Chrome)            │
+│     ├─ Job tracking & monitoring                        │
+│     ├─ Database updates (SQLite)                        │
+│     ├─ Notifications (Telegram/Email)                   │
+│     ├─ Google Sheets export                             │
+│     └─ Monitoring markdown updates                      │
+│                                                         │
+│  🗄️  Data Storage                                       │
+│     ├─ tracker.db (SQLite)                              │
+│     │  ├─ products                                      │
+│     │  ├─ price_history                                 │
+│     │  ├─ notifications                                 │
+│     │  ├─ job_runs                                      │
+│     │  └─ error_log                                     │
+│     └─ web/monitoring/ (Markdown files)                 │
+│        ├─ status.md                                     │
+│        ├─ metrics.md                                    │
+│        └─ logs.md                                       │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
 │     └─ tracker.db (SQLite in repo)          │
 │                                             │
 └─────────────────────────────────────────────┘
