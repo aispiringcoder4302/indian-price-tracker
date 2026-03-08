@@ -8,6 +8,13 @@ Layer 4 Production: Playwright scraping + Monitoring dashboard
 """
 
 import sys
+import io
+
+# Fix Windows console encoding FIRST - before any other imports
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+
 import os
 from datetime import datetime
 
